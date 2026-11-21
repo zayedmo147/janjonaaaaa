@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>جنى ❤️</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Arial", sans-serif;
+    }
+
+    body {
+        background-image: url("ana.JPG");
+        background-size: cover;
+        background-position: center 30%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        min-height: 100vh;
+    }
+
+    /* قلوب الخلفية */
+    .heart {
+        position: fixed;
+        color: rgba(255, 105, 145, 0.25);
+        font-size: 25px;
+        animation: float 8s linear infinite;
+        pointer-events: none;
+    }
+
+    @keyframes float {
+        0% {
+            transform: translateY(110vh) rotate(0deg);
+            opacity: 0;
+        }
+        20% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-10vh) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    /* شاشة الباسورد */
+    #login {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .login-box {
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+        padding: 40px 25px;
+        border-radius: 30px;
+        background: rgba(255,255,255,0.09);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255,255,255,0.15);
+        box-shadow: 0 0 50px rgba(255, 30, 100, 0.25);
+    }
+
+    .big-heart {
+        font-size: 75px;
+        animation: beat 1.2s infinite;
+        margin-bottom: 15px;
+    }
+
+    @keyframes beat {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.18); }
+    }
+
+    h1 {
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+
+    .sub {
+        color: #ffc3d3;
+        margin-bottom: 25px;
+    }
+
+    input {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        outline: none;
+        border-radius: 15px;
+        text-align: center;
+        font-size: 22px;
+        background: rgba(255,255,255,0.12);
+        color: white;
+        border: 1px solid rgba(255,255,255,0.2);
+        margin-bottom: 15px;
+    }
+
+    input::placeholder {
+        color: #dca5b5;
+    }
+
+    button {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 15px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        color: white;
+        background: linear-gradient(135deg, #ff477e, #ff174f);
+        box-shadow: 0 8px 25px rgba(255, 30, 90, 0.3);
+        transition: 0.3s;
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+    }
+
+    #wrong {
+        color: #ff8aa8;
+        margin-top: 12px;
+        display: none;
+    }
+
+    /* المحتوى */
+    #content {
+        display: none;
+        max-width: 900px;
+        margin: auto;
+        padding: 35px 18px 60px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .hero {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .hero h2 {
+        font-size: clamp(40px, 10vw, 75px);
+        color: #ff8aaa;
+        text-shadow: 0 0 25px rgba(255, 80, 130, 0.5);
+    }
+
+    .hero p {
+        font-size: 20px;
+        color: #ffd5df;
+        margin-top: 10px;
+    }
+
+    /* العداد */
+    .counter-title {
+        text-align: center;
+        font-size: 22px;
+        margin-bottom: 18px;
+        color: #ffc4d2;
+    }
+
+    .counter {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+        margin-bottom: 35px;
+    }
+
+    .time-box {
+        padding: 20px 8px;
+        text-align: center;
+        border-radius: 20px;
+        background: rgba(255,255,255,0.08);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255,130,160,0.2);
+        box-shadow: 0 10px 35px rgba(0,0,0,0.2);
+    }
+
+    .time-box span {
+        display: block;
+        font-size: clamp(28px, 7vw, 48px);
+        font-weight: bold;
+        color: #ff759b;
+    }
+
+    .time-box small {
+        color: #ffd2dc;
+        font-size: 14px;
+    }
+
+    /* الرسالة */
+    .letter {
+        background: rgba(255,255,255,0.07);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 28px;
+        padding: 30px 25px;
+        line-height: 2.1;
+        font-size: 18px;
+        box-shadow: 0 15px 50px rgba(0,0,0,0.25);
+    }
+
+    .letter h3 {
+        text-align: center;
+        color: #ff91ad;
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    .letter p {
+        margin-bottom: 18px;
+        color: #ffe7ed;
+    }
+
+    .highlight {
+        text-align: center;
+        font-size: 24px;
+        color: #ff91ad !important;
+        font-weight: bold;
+        margin: 25px 0 !important;
+    }
+
+    .footer {
+        text-align: center;
+        margin-top: 30px;
+        color: #e9aabb;
+        font-size: 15px;
+    }
+
+    @media(max-width: 600px) {
+        .counter {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .letter {
+            padding: 25px 18px;
+            font-size: 17px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- قلوب -->
+<div class="heart" style="left:5%; animation-delay:0s;">♥</div>
+<div class="heart" style="left:18%; animation-delay:2s;">♥</div>
+<div class="heart" style="left:35%; animation-delay:5s;">♥</div>
+<div class="heart" style="left:55%; animation-delay:1s;">♥</div>
+<div class="heart" style="left:75%; animation-delay:4s;">♥</div>
+<div class="heart" style="left:90%; animation-delay:6s;">♥</div>
+
+<!-- شاشة الدخول -->
+<section id="login">
+    <div class="login-box">
+        <div class="big-heart">❤️</div>
+
+        <h1>بحبك يحياتى </h1>
+
+        <p class="sub">
+            فيه حاجة صغيرة مستنياكي جوا... ✨
+        </p>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="اكتبي كلمة السر ❤️"
+            maxlength="2"
+        >
+
+        <button onclick="checkPassword()">
+          ادخلي يا ينور عينى ❤️
+        </button>
+
+        <p id="wrong">كلمة السر غلط يا عبيطه 😭❤️</p>
+    </div>
+</section>
+
+<!-- الموقع -->
+<main id="content">
+
+    <div class="hero">
+        <h2>حياتى ❤️</h2>
+        <p>أجمل صدفة حصلتلي في الدنيا.</p>
+    </div>
+
+    <div class="counter-title">
+        بقالنا سوا... ❤️
+    </div>
+
+    <div class="counter">
+
+        <div class="time-box">
+            <span id="months">0</span>
+            <small>شهر</small>
+        </div>
+
+        <div class="time-box">
+            <span id="days">0</span>
+            <small>يوم</small>
+        </div>
+
+        <div class="time-box">
+            <span id="hours">0</span>
+            <small>ساعة</small>
+        </div>
+
+        <div class="time-box">
+            <span id="minutes">0</span>
+            <small>دقيقة</small>
+        </div>
+
+        <div class="time-box">
+            <span id="seconds">0</span>
+            <small>ثانية</small>
+        </div>
+
+    </div>
+
+    <div class="letter">
+
+        <h3>ل نور عينى  ❤️</h3>
+
+        <p>
+            جنجونتي، أنا مش عارف أبدأ الكلام منين، بس عارف حاجة واحدة...
+            إن وجودك في حياتي بقى من أحلى الحاجات اللي حصلتلي.
+        </p>
+
+        <p>
+            يمكن إحنا بقالنا وقت قليل، بس الغريب إن في وقت قليل قدرتي
+            تخلي ليكي مكان كبير أوي عندي.
+            بقيت بستنى كلامك، بستنى أشوف رسالتك، وبفرح لمجرد إنك موجودة.
+        </p>
+
+        <p>
+            أنا بحب تفاصيلك الصغيرة قبل الكبيرة، بحب طريقتك في الكلام،
+            وضحكتك، وهزارك، وكل حاجة
+        </p>
+
+        <p class="highlight">
+            إنتي مش مجرد شخص بحبه... إنتي شخص وجوده بيفرق معايا ❤️
+        </p>
+
+        <p>
+            عايزك تعرفي إن مهما حصل، أنا دايمًا هكون مبسوط إن في واحدة
+            زيك دخلت حياتي.
+        </p>
+
+        <p>
+            ولو سألتيني إيه أكتر حاجة بحبها فيكي؟
+            غالبًا هقولك: "إنتي كلها على بعضها" 😂❤️
+            لأن الموضوع مش حاجة واحدة أقدر أحددها.
+        </p>
+
+        <p>
+            بحب كلامنا، بحب هزارنا، بحب لما نتكلم في أي حاجة حتى لو
+            ملهاش لازمة، وبحب إحساس إن في حد بستنى أكلمه في آخر اليوم.
+        </p>
+
+        <p>
+            ويمكن الكلام ده كله مش هيقدر يوصف اللي جوايا،
+            بس على الأقل عايزك تعرفي إنك غالية عندي جدًا،
+            وإن الأيام اللي عدت دي بالنسبة لي كانت حلوة بسببك.
+        </p>
+
+        <p class="highlight">
+            7 أيام؟ لا يا حياتى... دي 7 أيام من أجمل أيامي ❤️
+        </p>
+
+        <p>
+            ولسه العداد بيعد...
+            يوم ورا يوم، ساعة ورا ساعة، دقيقة ورا دقيقة،
+            وكل ثانية بتعد بتفكرني إن الوقت اللي بقضيه معاكي
+            وقت أنا فعلًا بحبه.
+        </p>
+
+        <p class="highlight">
+            بحبك يا ينور عينى ❤️
+        </p>
+
+        <p style="text-align:center;">
+            ومهما كتبت... برضه مش هكفيكي حقك. 🫶🏻
+        </p>
+
+    </div>
+
+</main>
+
+<script>
+
+    // كلمة السر
+    const correctPassword = "21";
+
+    function checkPassword() {
+
+        const password = document.getElementById("password").value;
+        const wrong = document.getElementById("wrong");
+
+        if (password === correctPassword) {
+
+            document.getElementById("login").style.display = "none";
+            document.getElementById("content").style.display = "block";
+
+            startCounter();
+
+        } else {
+
+            wrong.style.display = "block";
+
+            setTimeout(() => {
+                wrong.style.display = "none";
+            }, 2000);
+        }
+    }
+
+    // السماح بالضغط على Enter
+    document.getElementById("password").addEventListener("keydown", function(event) {
+
+        if (event.key === "Enter") {
+            checkPassword();
+        }
+
+    });
+
+    // بداية علاقتكم
+    // 27 أغسطس 2026 - الساعة 11:17 مساءً
+    const startDate = new Date("2026-08-27T23:17:00");
+
+    function startCounter() {
+
+        function updateCounter() {
+
+            const now = new Date();
+
+            // حساب عدد الشهور الكاملة
+            let months =
+                (now.getFullYear() - startDate.getFullYear()) * 12 +
+                (now.getMonth() - startDate.getMonth());
+
+            let monthDate = new Date(startDate);
+            monthDate.setMonth(monthDate.getMonth() + months);
+
+            if (monthDate > now) {
+                months--;
+                monthDate = new Date(startDate);
+                monthDate.setMonth(monthDate.getMonth() + months);
+            }
+
+            // حساب الوقت المتبقي بعد الشهور
+            let difference = now - monthDate;
+
+            if (difference < 0) {
+                difference = 0;
+            }
+
+            const totalSeconds = Math.floor(difference / 1000);
+
+            const days = Math.floor(totalSeconds / 86400);
+
+            const hours = Math.floor(
+                (totalSeconds % 86400) / 3600
+            );
+
+            const minutes = Math.floor(
+                (totalSeconds % 3600) / 60
+            );
+
+            const seconds = totalSeconds % 60;
+
+            document.getElementById("months").textContent = months;
+            document.getElementById("days").textContent = days;
+            document.getElementById("hours").textContent = hours;
+            document.getElementById("minutes").textContent = minutes;
+            document.getElementById("seconds").textContent =
+                String(seconds).padStart(2, "0");
+        }
+
+        updateCounter();
+
+        setInterval(updateCounter, 1000);
+    }
+
+</script>
+
+</body>
+</html>
